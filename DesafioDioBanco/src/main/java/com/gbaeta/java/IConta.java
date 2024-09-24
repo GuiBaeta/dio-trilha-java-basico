@@ -1,13 +1,13 @@
-package main;
+package com.gbaeta.java;
 
 public interface IConta {
 
-	void saca(double valor);
+	void sacar(double valor);
 
 	void depositar(double valor);
 
 	void transferir(double valor, Conta contaDestina);
-	
+
 	void imprimirExtrato();
 
 }

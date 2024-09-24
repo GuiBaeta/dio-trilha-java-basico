@@ -1,14 +1,14 @@
-package main;
+package com.gbaeta.java;
+
+import lombok.Setter;
 
 public class Cliente {
 
+	@Setter
 	private String nome;
 
 	public String getNome() {
 		return nome;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
 }

@@ -1,4 +1,4 @@
-package main;
+package com.gbaeta.java;
 
 public class ContaPoupanca extends Conta {
 
@@ -11,6 +11,5 @@ public class ContaPoupanca extends Conta {
 		System.out.println("=== Extrato Conta Poupança ===");
 		super.imprimirInformacoesComuns();
 	}
-
 
 }

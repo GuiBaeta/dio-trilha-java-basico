@@ -1,13 +1,23 @@
-package main;
+package com.gbaeta.java;
 
-public abstract class Conta implements IConta{
-	
+import java.math.BigDecimal;
+
+import lombok.Getter;
+
+public abstract class Conta implements IConta {
+
 	private static int AGENCIA_PADRAO = 1;
 	private static int SEQUENCIAL = 1;
 
+	@Getter
 	protected int agencia;
+	
+	@Getter
 	protected int numero;
+	
+	@Getter
 	protected double saldo;
+	
 	protected Cliente cliente;
 	
 	public Conta(Cliente cliente) {
@@ -16,20 +26,8 @@ public abstract class Conta implements IConta{
 		this.cliente = cliente;
 	}
 
-	public int getAgencia() {
-		return agencia;
-	}
-
-	public int getNumero() {
-		return numero;
-	}
-
-	public double getSaldo() {
-		return saldo;
-	}
-
 	@Override
-	public void saca(double valor) {
+	public void sacar(double valor) {
 		this.saldo -= valor;
 	}
 
@@ -44,12 +42,18 @@ public abstract class Conta implements IConta{
 		contaDestina.depositar(valor);
 	}
 	
+	 // Método para solicitar empréstimo
+    public void solicitarEmprestimo(BigDecimal valorEmprestimo, int numeroParcelas) {
+        Emprestimo emprestimo = new Emprestimo(this, valorEmprestimo, numeroParcelas);
+        emprestimo.solicitarEmprestimo();
+    }
+	
 	protected void imprimirInformacoesComuns() {
 		System.out.println(String.format("Titular: %s", this.cliente.getNome()));
 		System.out.println(String.format("Agencia: %d", this.agencia));
 		System.out.println(String.format("Numero: %d", this.numero));
 		System.out.println(String.format("Saldo: %.2f", this.saldo));
+		System.out.println();
 	}
-
 
 }
